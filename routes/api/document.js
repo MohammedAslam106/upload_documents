@@ -30,7 +30,8 @@ routes.post("/", jwtVerify, upload.single("document"), async (req, res) => {
     };
     const response = await documentSchema.create(obj);
     console.log(29);
-    res.json({ message: response });
+    // res.json({ message: response });
+    res.json({url:`${process.env.BASE_URL}/api/document/${response._id}`})
     console.log(response);
   } catch (error) {
     res.json({ error: error });
