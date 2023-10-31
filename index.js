@@ -3,6 +3,7 @@ const express=require('express');
 const cors=require('cors')
 const routesApi=require('./routes/api/index')
 const dotenv=require('dotenv')
+const compression=require('compression')
 dotenv.config()
 const MONGO_DB_CONNECTION=process.env.MONGO_DB_CONNECTION
 
@@ -12,6 +13,7 @@ const api=express()
 
 api.use(express.json({limit: '50mb'}))
 api.use(cors())
+api.use(compression())
 
 api.use('/api',routesApi)
 
